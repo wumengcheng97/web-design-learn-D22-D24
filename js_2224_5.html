@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：apple-gt;pear</p>
+    <button id="push-btn">进栈</button>
+    <button id="pop-btn">退栈</button>
+    <button id="font-btn">打印栈顶元素内容</button>
+    <button id="empty-btn">判断栈是否为空</button>
+
+    <script>
+
+        var stack = ["apple", "pear"];
+
+        document.getElementById("push-btn").onclick = function(){
+            // 1
+            /*stack.unshift(document.getElementById("stack-input").value);
+            document.getElementById("stack-cont").innerHTML = "栈内容：" + stack.reverse().join(" -> ");
+            stack.reverse();
+            console.log(stack);*/
+
+            // 2
+            stack.unshift(document.getElementById("stack-input").value);
+            document.getElementById("stack-cont").innerHTML = "栈内容：" + stack.join(" <- ");
+            console.log(stack);
+        }
+
+        document.getElementById("pop-btn").onclick = function(){
+            // 1
+            /*stack.pop();
+            document.getElementById("stack-cont").innerHTML = "栈内容：" + stack.reverse().join(" -> ");
+            stack.reverse();
+            console.log(stack); */
+            
+            // 2 
+            stack.shift();
+            document.getElementById("stack-cont").innerHTML = "栈内容：" + stack.join(" <- ");
+            console.log(stack);
+        }
+
+        document.getElementById("font-btn").onclick = function(){
+            // 1 
+            //document.getElementById("stack-cont").innerHTML = stack[stack.length - 1];   
+
+            // 2 
+            document.getElementById("stack-cont").innerHTML = stack[0];   
+
+        }
+
+        document.getElementById("empty-btn").onclick = function(){
+            if (stack.length > 0) {
+                document.getElementById("stack-cont").innerHTML = "不空" ;
+            }else{
+                document.getElementById("stack-cont").innerHTML = "空"; 
+            }
+        }
+
+    </script>
+</body>
+
+</html>

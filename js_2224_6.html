@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <script>
+        var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+        console.log("原顺序：" + arr);
+        arr.sort(function (a, b) {
+            return a - b;
+        });
+        console.log("从小到大：" + arr);
+        arr.sort(function (a, b) {
+            return b - a;
+        });
+        console.log("从大到小：" + arr);
+
+        var arr1 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+        console.log("原顺序：" + arr1);
+        arr1.sort(function (a, b) {
+            var nameA = a.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+
+            // names must be equal
+            return 0;
+        });
+        console.log("a-z：" + arr1);
+        arr1.sort(function (a, b) {
+            var nameA = a.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+                return 1;
+            }
+            if (nameA > nameB) {
+                return -1;
+            }
+
+            // names must be equal
+            return 0;
+        });
+        console.log("z-a：" + arr1);
+
+        var arr2 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+        console.log("原顺序：" + arr2);
+        arr2.sort(function (a, b) {
+            var nameA = a[1]; // ignore upper and lowercase
+            var nameB = b[1]; // ignore upper and lowercase
+            if (nameA < nameB) {
+                return 1;
+            }
+            if (nameA > nameB) {
+                return -1;
+            }
+
+            // names must be equal
+            return 0;
+        });
+        console.log(arr2);
+
+        var arr3 = [
+            {
+                id: 1,
+                name: 'candy',
+                value: 40
+            }, {
+                id: 2,
+                name: 'Simon',
+                value: 50
+            }, {
+                id: 3,
+                name: 'Tony',
+                value: 45
+            }, {
+                id: 4,
+                name: 'Annie',
+                value: 60
+            }
+        ];
+        arr3.sort(function (a, b) {
+            var nameA = a.value; // ignore upper and lowercase
+            var nameB = b.value; // ignore upper and lowercase
+            if (nameA < nameB) {
+                return -1;
+            }
+            if (nameA > nameB) {
+                return 1;
+            }
+
+            // names must be equal
+            return 0;
+        });
+        console.log(arr3);
+    </script>
+</body>
+
+</html>

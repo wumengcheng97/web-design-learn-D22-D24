@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+
+    <script>
+        var tree = {
+            "id": 0,
+            "name": "root",
+            "left": {
+                "id": 1,
+                "name": "Simon",
+                "left": {
+                    "id": 3,
+                    "name": "Carl",
+                    "left": {
+                        "id": 7,
+                        "name": "Lee",
+                        "left": {
+                            "id": 11,
+                            "name": "Fate"
+                        }
+                    },
+                    "right": {
+                        "id": 8,
+                        "name": "Annie",
+                        "left": {
+                            "id": 12,
+                            "name": "Saber"
+                        }
+                    }
+                },
+                "right": {
+                    "id": 4,
+                    "name": "Tony",
+                    "left": {
+                        "id": 9,
+                        "name": "Candy"
+                    }
+                }
+            },
+            "right": {
+                "id": 2,
+                "name": "right",
+                "left": {
+                    "id": 5,
+                    "name": "Carl",
+                },
+                "right": {
+                    "id": 6,
+                    "name": "Carl",
+                    "right": {
+                        "id": 10,
+                        "name": "Kai"
+                    }
+                }
+            }
+        }
+
+        var p = tree;
+        // 假设id和name均不会重复，根据输入name找到对应的id
+        function findIdByName(name) {           
+            while(p != null){
+                if(p.name == name){
+                    return p.id;
+                }else{
+                    if (p.left != null) {
+                        p = p.left;
+                        findIdByName(name);
+                    }
+                    if (p.right != null){
+                        p = p.right;
+                        findIdByName(name);
+                    }
+                }
+            }
+        }
+
+        // 假设id和name均不会重复，根据输入id找到对应的name
+        function findNameById(id) {
+            while(p != null){
+                if(p.id == id){
+                    return p.name;
+                }else{
+                    if (p.left != null) {
+                        p = p.left;
+                        findIdByName(id);
+                    }
+                    if (p.right != null){
+                        p = p.right;
+                        findIdByName(id);
+                    }
+                }
+            }
+        }
+
+        // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+        function getListWithDLR() {
+            console.log(p.name);
+            if (p.left != null) {
+                p = p.left;
+                getListWithDLR();
+            }
+            if (p.right != null) {
+                p = p.right;
+                getListWithDLR();
+            }
+        }
+
+        // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+        function getListWithLDR() {
+            
+            if (p.left != null) {
+                p = p.left;
+                getListWithLDR();
+            }
+            console.log(p.name);
+            if (p.right != null) {
+                p = p.right;
+                getListWithLDR();
+            }
+        }
+
+        // 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+        function getListWithLRD() {
+            
+            if (p.left != null) {
+                p = p.left;
+                getListWithLRD();
+            }
+            if (p.right != null) {
+                p = p.right;
+                getListWithLRD();
+            }
+            console.log(p.name);
+        }
+    </script>
+</body>
+
+</html>

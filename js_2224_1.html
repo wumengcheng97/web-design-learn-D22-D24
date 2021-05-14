@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <div>
+        <label>String A:
+            <input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+        </label>
+        <textarea id="str-a"></textarea>
+        <label>String B:
+            <input id="radio-b" type="radio" name="str-obj" value="b">
+        </label>
+        <textarea id="str-b"></textarea>        
+        <label>Num A：<input id="num-a" type="number" value="0"></label>
+        <label>Num B：<input id="num-b" type="number" value="1"></label>
+    </div>
+    <div>
+        <button id="btn-1">获取当前选中输入的内容长度</button>
+        <button id="btn-2">当前选中输入中的第3个字符</button>
+        <button id="btn-3">把两个输入框的文字连接在一起输出（concat）</button>
+        <button id="btn-4">输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+        <button id="btn-5">输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+        <button id="btn-6">使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+        <button id="btn-7">当前选中输入框的行数</button>
+        <button id="btn-8">使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+        <button id="btn-9">把所选输入框中的内容全部转为大写</button>
+        <button id="btn-10">把所选输入框中的内容全部转为小写</button>
+        <button id="btn-11">把所选输入框中内容的半角空格全部去除</button>
+        <button id="btn-12">把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+    </div>
+    <p id="result"></p>
+
+
+    <script>
+        var str_a, str_b, radio_a, radio_b, num_a, num_b;
+        // 1
+        document.getElementById("btn-1").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.length;
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = str_b.length;
+            }
+        }
+
+        // 2
+        document.getElementById("btn-2").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.charAt(2);
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = str_b.charAt(2);
+            }
+        }
+
+        // 3
+        document.getElementById("btn-3").onclick = function(){
+            str_a = document.getElementById("str-a").value;
+            str_b = document.getElementById("str-b").value;
+            document.getElementById("result").innerHTML = str_a.concat(str_b);
+        }
+
+        // 4
+        document.getElementById("btn-4").onclick = function(){
+            str_a = document.getElementById("str-a").value;
+            str_b = document.getElementById("str-b").value;
+            document.getElementById("result").innerHTML = str_a.indexOf(str_b);
+        }
+        
+        // 5
+        document.getElementById("btn-5").onclick = function(){
+            str_a = document.getElementById("str-a").value;
+            str_b = document.getElementById("str-b").value;
+            document.getElementById("result").innerHTML = str_b.lastIndexOf(str_a);
+        }
+
+        //6
+        document.getElementById("btn-6").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            num_a = document.getElementById("num-a").value;
+            num_b = document.getElementById("num-b").value;
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.slice(num_a, num_b);
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = str_b.slice(num_a, num_b);
+            }
+
+        }
+
+        // 7
+        document.getElementById("btn-7").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            //console.log(str_a.cols)
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.split("\n").length;
+                //Math.ceil(str_a.length / str_a.cols);
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = Math.ceil(str_b.length / str_b.cols);
+            }
+        }
+
+        // 8
+        document.getElementById("btn-8").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            num_a = document.getElementById("num-a").value;
+            num_b = document.getElementById("num-b").value;
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.substr(num_a, num_b-1);
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = str_b.substr(num_a, num_b-1);
+            }
+        }
+
+        // 9
+        document.getElementById("btn-9").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.toUpperCase();
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = str_b.toUpperCase();
+            }
+        }
+
+        // 10
+        document.getElementById("btn-10").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.toLowerCase();
+                console.log(111);
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = str_b.toLowerCase();
+            }
+        }
+
+        // 11
+        document.getElementById("btn-11").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            if(radio_a){
+                str_a = document.getElementById("str-a").value;
+                document.getElementById("result").innerHTML = str_a.replace(/\s+/g, "");
+            }
+            if(radio_b){
+                str_b = document.getElementById("str-b").value;
+                document.getElementById("result").innerHTML = str_b.replace(/\s+/g, "");
+            }
+        }
+        // 12
+        document.getElementById("btn-12").onclick = function(){
+            radio_a = document.getElementById("radio-a").checked;
+            radio_b = document.getElementById("radio-b").checked;
+            str_a = document.getElementById("str-a").value;
+            str_b = document.getElementById("str-b").value;
+            var result = '';
+            if(radio_a){ 
+                for(var i=0; i<str_a.length; i++){
+                    
+                    if(str_a.charAt(i) == 'a'){
+                        result += str_b;
+                    }else{
+                        result += str_a[i];
+                    }
+                }  
+                document.getElementById("result").innerHTML = result;
+            }
+            if(radio_b){ 
+                for(var i=0; i<str_b.length; i++){
+                    
+                    if(str_b.charAt(i) == 'a'){
+                        result += str_a;
+                    }else{
+                        result += str_b[i];
+                    }
+                }  
+                document.getElementById("result").innerHTML = result;
+            }
+        }
+        
+    </script>
+</body>
+</html>
